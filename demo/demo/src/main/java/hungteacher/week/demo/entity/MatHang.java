@@ -3,11 +3,9 @@ package hungteacher.week.demo.entity;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,6 +27,6 @@ public class MatHang {
     @NotNull
     private String chietKhau;
 
-
-
+    @OneToMany(mappedBy = "matHang", cascade = CascadeType.ALL)
+    private List<DSMatHang> dsMatHangList;
 }
